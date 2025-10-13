@@ -32,6 +32,7 @@ void addnode() {
     temp->next = ttemp;
 }
 void Deletefirst(){
+
     temp=first;
     first=first->next;
     temp->next=NULL;
