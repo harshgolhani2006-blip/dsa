@@ -36,6 +36,7 @@ void Deletefirst(){
     first=first->next;
     temp->next=NULL;
     delete temp;
+
 }
 
 void display() {
