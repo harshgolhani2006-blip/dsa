@@ -1,0 +1,94 @@
+#include<iostream>
+using namespace std;
+
+struct BST{
+    int data;
+    BST *left,*right;
+};
+BST *root,*temp,*ttemp,*p;
+void init(){
+    root=temp=ttemp=p=NULL;
+}
+void create_root(int x){
+    root=new BST;
+    root->data=x;
+    root->left=root->right=NULL;
+}
+void ADD_Node(int x){
+    temp=root;
+    while(temp!=NULL){
+        ttemp=temp;
+        if(temp->data>x)
+        temp=temp->left;
+        else
+        temp=temp->right;
+    }
+    p=new BST;
+    p->data=x;p->left=p->right=NULL;
+    if(ttemp->data>x)
+    ttemp->left=p;
+    else
+    ttemp->right=p;
+}
+//Inorder.
+void Inorder(BST *node){
+    if(node!=NULL){
+        Inorder(node->left);
+        cout<<node->data<<" ";
+        Inorder(node->right);
+    }
+}
+//Preorder.
+void preorder(BST*node){
+    if(node!=NULL){
+        cout<<node->data<<" ";
+        preorder(node->left);
+        preorder(node->right);
+    }
+}
+//Postorder.
+void Postorder(BST*node){
+    if(node!=NULL){
+    Postorder(node->left);
+    Postorder(node->right);
+    cout<<node->data<<" ";
+}
+}
+//vertically tree print .
+void printTree(BST* root,int space=0,int COUNT=5){
+    if(root==NULL) 
+    return;
+    printTree(root->right,space+COUNT);
+    for(int i=0;i<space; i++)cout<<" ";
+    cout << root->data << endl;
+    printTree(root->left,space+COUNT);
+}
+void Display(){
+    cout<<"\nInorder : ";
+    Inorder(root);
+    cout<<"\nPreorder : ";
+    preorder(root);
+    cout<<"\nPostorder : ";
+    Postorder(root);
+    cout<<"\n\nVertical Tree:\n";
+    printTree(root);
+    cout<<endl;
+}
+int main(){
+    init();
+
+    int n,x;
+    cout<<"Enter number of nodes: ";
+    cin>>n;
+
+    cout<<"Enter root value: ";
+    cin>>x;
+    create_root(x);
+
+    for(int i=1; i<n; i++){
+        cout<<"Enter value: ";
+        cin>>x;
+        ADD_Node(x);
+    }
+    Display();
+}
