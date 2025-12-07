@@ -60,7 +60,7 @@ int main() {
     int choice, value;
 
      cout<<"\n-----Choice Stack Function List:-----\n";
-    while (1) {   // <<<---- YOUR LOOP
+    while (1) {   
         cout << "\n1.Push\n  2.Pop\n  3.Display\n  4.Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
@@ -80,7 +80,7 @@ int main() {
         } 
         else if (choice == 4) {
             cout << "Exiting..."; 
-            break;          // exit loop
+            break;  
         } 
         else {
             cout << "Invalid choice!";
