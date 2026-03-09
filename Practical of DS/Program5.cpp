@@ -64,5 +64,4 @@ int main() {
     pop(&s);
 
     top(&s);
-
 }
